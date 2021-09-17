@@ -1,63 +1,87 @@
 .reset,
 body {
-  border: none;
-  padding: none;
-  margin: none;
+    border: none;
+    padding: 0;
+    margin: 0;
 }
 a {
-  color: gray;
-  text-decoration: none;
-  margin: 0;
+    color: whitesmoke;
+    text-decoration: none;
+    margin: 0;
 }
 a:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 body,
 h1,
 a {
-  font-family: sans-serif;
+    font-family: sans-serif;
 }
 .header-media {
-  position: relative;
+    position: relative;
+    overflow: hidden;
 }
 .header-media video {
-  width: 100%;
-  display: flex;
+    height: 100.05vh;
+    display: flex;
+    filter: blur(2px);
 }
 .header-media img {
-  position: absolute;
-  margin: 0 auto;
-  left: 0;
-  right: 0;
-  top: 25%;
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 15%;
+    max-width: 333px;
+
 }
+.header-media h1 {
+    position: absolute;
+    color: white;
+    font-family: initial;
+    margin: 0;
+    top: 1rem;
+    left: 1rem;
+}
+
 section.info {
-  display: flex;
-  flex-flow: column;
-  padding: 2rem;
-  background: linear-gradient(0deg, rgb(102, 106, 108), rgb(245, 245, 245));
-  height: 90vh;
-  text-align: center;
+    display: flex;
+    flex-flow: column;
+    background: #ffffff6e;
+    text-align: center;
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+
 }
-section.info h1 {
-  color: dimgrey;
-  font-family: Georgia, 'Times New Roman', Times, serif !important;
-}
+
 div.enlaces {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
 }
 div.enlaces a {
-  margin: 0 0.5rem;
+    display: flex;
+    width: 45%;
+    max-width: 14rem;
+}
+div.enlaces a small {
+    text-align: left;
+}
+.calendar-link,
+.meet-link {
+    display: flex;
+    vertical-align: middle;
+    justify-content: center;
 }
 .meet-link {
-  display: flex;
-  vertical-align: middle;
-  margin: 0;
-  width: 150px;
+    width: 150px;
 }
-.meet-link img {
-  margin: 0.4rem;
+.meet-link img,
+.calendar-link img {
+    margin: 0.4rem;
+}
+
+.calendar-link {
+    flex-flow: column;
 }
