@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <title>Mercedes Macías novenario</title>
+  <script async type="module" src="index.js"></script>
 </head>
 
 <body>
@@ -23,14 +24,17 @@
     </header>
 
     <section class="remaining-time">
-      
+      <small>Siguiente rosario:</small>
+      <span id="time">Iniciando...</span>
     </section>
 
-    <section class="info">
+    <hr>
+    
+    <section class="info toggle hide">
 
       <div class="card middle">
-        <a href="https://calendar.google.com/event?action=TEMPLATE&amp;tmeid=NTFjcGgzZThjbzFmcjN2YnUzNDFiNDZiYTdfMjAyMTA5MTdUMDAwMDAwWiBhbmRyZW1lcmNoYW50QG0&amp;tmsrc=andremerchant%40gmail.com&amp;scp=ALL">
-          <img src="assets/calendar.jpg" alt="test">
+        <a href="https://calendar.google.com/event?action=TEMPLATE&amp;tmeid=NTFjcGgzZThjbzFmcjN2YnUzNDFiNDZiYTdfMjAyMTA5MTdUMDAwMDAwWiBhbmRyZW1lcmNoYW50QG0&amp;tmsrc=andremerchant%40gmail.com&amp;scp=ALL" target="_blank">
+          <img src="assets/calendar.jpg" alt="Añadir a calendario">
           <div class="title">
             <h3> Google Calendar </h3>
           </div>
@@ -41,8 +45,8 @@
       </div>
       
       <div class="card middle">
-        <a href="https://meet.google.com/ezy-dmpt-iqn">
-          <img src="assets/meeting.jpg" alt="test">
+        <a href="https://meet.google.com/ezy-dmpt-iqn" target="_blank">
+          <img src="assets/meeting.jpg" alt="Empezar Meet">
           <div class="title">
             <h3> Google Meet </h3>
           </div>
@@ -53,20 +57,20 @@
       </div>
 
       <div class="card middle">
-        <a href="#">
-          <img src="assets/rosario.jpg" alt="test">
+        <div onclick="toggleSection('#rosario')">
+          <img src="assets/rosario.jpg" alt="Empezar Rosario">
           <div class="title">
             <h3> Rosario </h3>
           </div>
-        </a>
+        </div>
         <p>
           Inicia un rosario interactivo, para seguir las partes del rosario.
         </p>
       </div>
 
       <div class="card middle">
-        <a href="#">
-          <img src="assets/wait.jpg" alt="test">
+        <a href="https://www.youtube.com/embed/xJEfC_CR57w" target="_blank">
+          <img src="assets/wait.jpg" alt="Sala de espera">
           <div class="title">
             <h3> Sala de espera </h3>
           </div>
@@ -78,6 +82,37 @@
 
     </section>
   </div>
+
+  <!-- rosario -->
+
+  <section class="rosario-container toggle">
+    <small class="floating-btn" onclick="toggleSection('.info')"> ⬅ Volver</small>
+    <header class="misterio">
+      <h2>Santo Rosario</h2>
+      <h3>Misterio</h3>
+      <p> ... </p>
+    </header>
+    <div id="rosario">
+    </div>
+  </section>
+
+  <!-- fin rosario -->
+
+  <script>
+    function toggleSection(section) {
+      const currSections = document.querySelectorAll('.toggle');
+      console.log({section, currSections})
+        currSections.forEach(sec => {
+          sec.classList.remove('show');
+          sec.classList.add('hide');
+        })
+        const pickedEl = document.querySelector(section);
+        console.log({pickedEl})
+        pickedEl.classList.remove('hide');
+        pickedEl.classList.add('show');
+      }
+  </script>
+
 </body>
 
 </html>
