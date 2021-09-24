@@ -1,48 +1,94 @@
 export class rosario {
-    constructor(){}
+    graphRosario=null;
+    constructor(){
+        this.graphRosario = new drawRosario();
+    }
+
+    indexRosario = 0;
+
+    secuencia = [
+        'Primer',
+        'Segundo',
+        'Tercero',
+        'Cuarto',
+        'Quinto'
+    ];
 
     misterios = [
         {
             name: 'Gozosos',
             days: [1,6],
             title: [
-                'La Encarnación del Hijo de Dios',
-                'La Visitación de Nuestra Señora a su prima santa Isabel',
-                'El Nacimiento del Hijo de Dios.',
-                'La Presentación de Jesús en el templo.'
+                'La encarnación del hijo de Dios',
+                'La visitación de nuestrasSeñora a su prima santa Isabel',
+                'El nacimiento del hijo de Dios.',
+                'La presentación de Jesús en el templo.',
+                'El niño Jesús perdido y hallado en el templo.'
             ]
         },
         {
             name: 'Gloriosos',
             days: [3,7],
             title: [
-                'La Resurrección del Hijo de Dios.',
-                'La Ascensión del Señor a los Cielos',
-                'La Venida del Espíritu Santo sobre los Apóstoles.',
-                'La Asunción de nuestra Señora a los Cielos.',
-
+                'La resurrección del hijo de Dios.',
+                'La ascensión del señor a los cielos',
+                'La venida del Espíritu santo sobre los apóstoles.',
+                'La asunción de nuestra señora a los cielos.',
+                'La coronación de la Santísima Virgen como reina de cielos y tierra.'
             ]
         },
         {
             name: 'Dolorosos ',
             days: [2,5],
             title: [
-                'La Oración de Jesús en el huerto.',
-                'La Flagelación del Señor.',
+                'La oración de Jesús en el huerto.',
+                'La flagelación del Señor.',
                 'La Coronación de espinas.',
-                ' Jesús con la Cruz a cuestas, camino del Calvario.'
+                'Jesús con la cruz a cuestas, camino del calvario.',
+                'La crucifixión y muerte de nuestro señor.'
             ]
         },
         {
             name: 'Luminosos',
             days: [4],
             title: [
-                'El Bautismo de Jesús en el Jordán.',
+                'El bautismo de Jesús en el Jordán.',
                 'La autorrevelación de Jesús en las bodas de Caná.',
-                'El anuncio del Reino de Dios invitando a la conversión.',
-                'La Transfiguración.'
+                'El anuncio del reino de Dios invitando a la conversión.',
+                'La transfiguración.',
+                'La institución de la eucaristía.'
             ]
         },
+    ];
+
+    pasos = [
+        {
+            inicio: [
+                'Acto de contrición',
+            ]
+        },
+        {
+            repeat: [
+                'N misterio',
+                'Padrenuestro',
+                'Ave María x10',
+                'Gloria',
+                'María, madre de gracia...',
+                'Oh Jesús mío',
+                'Música',
+            ]
+        },
+        {
+            end: [
+                'Letanías',
+                'Cordero de Dios',
+                'Oración',
+                'Ave María',
+                'Gloria',
+                'Salve'
+            ]
+        }
+
     ];
 
     getMisterio() {
@@ -52,48 +98,54 @@ export class rosario {
 
     drawMisterio(){
         const title = document.querySelector('.misterio h3');
-        const paragraph = document.querySelector('.misterio p');
+        // const paragraph = document.querySelector('.misterio p');
         const misterioObj = this.getMisterio();
-        console.log({ misterioObj})
         title.innerHTML=`Misterios ${misterioObj.name}`;
-        paragraph.innerHTML = misterioObj.title[0];
+        // paragraph.innerHTML = misterioObj.title[0];
     }
 
-    /**
-     * @todo terminar secuencia de rosario
-     */
-    bodyRosario(){
-        const pasos = [
-            {inicio:[
-                'Acto de contrición',
-            ]},
-            {repeat:[
-                'N misterio',
-                'Padrenuestro',
-                'Ave María x10',
-                'Gloria',
-                'María, Madre de gracia...',
-                'Oh Jesús mío',
-                'Música',
-            ]},
-            {end:[
-                'Letanías',
-                'Cordero de Dios',
-                'Oración',
-                'Ave María',
-                'Gloria',
-                'Salve'
-            ]}
+    duplicateArray = (_array,times) => {
+        const bigArray = [];
+        for(let i = 0; i < times; i++){
+            const _newArray = _array.slice(0);
+            const misterioIndex = _newArray.findIndex(text => text.includes('N misterio'));
+            _newArray[misterioIndex] = `${this.secuencia[i]} misterio: ${this.getMisterio().title[i]}`
+            bigArray.push(_newArray);
+        }
+        return bigArray.flat()
+    }
+    
+    renderRosario = () => 
+        Object.values(this.pasos)
+            .map(paso => {
+                if (Object.keys(paso).includes('repeat')) return this.duplicateArray(paso.repeat,5);
+                return Object.values(paso);
+            }).flat(2)
+    ;
+    
+    emulate = (action)=>{
+        const processEl = document.querySelector('.in-process');
+        const rosarioParts = this.renderRosario();
+        
+        if (action === 'start') { this.indexRosario = 0}
+        if (action === 'next') { this.indexRosario ++}
+        if (action === 'before' && this.indexRosario > 0) { this.indexRosario --}
 
-        ]
+        console.log({ rosarioIndex:this.indexRosario, action})
+        processEl.innerText = rosarioParts[this.indexRosario];
+        
+        this.manageRosario(this.indexRosario, rosarioParts);
+    }
+
+    manageRosario(index, rosarioParts){
+        if (rosarioParts[index].includes('Ave María x10')){
+            this.graphRosario.init(10);
+            this.graphRosario.handleRosario();
+        } else this.graphRosario.removeRosario()
     }
 };
 
-export class drawRosario {
-
-    constructor(ballsNum){
-        this.init(ballsNum)
-    }
+class drawRosario {
 
     createPasos(element) {
         const pasoEl = document.createElement('span');
@@ -148,6 +200,12 @@ export class drawRosario {
     init(balls) {
         this.createRosario(balls);
         this.handleRosario(balls - 1);
+    }
+
+    removeRosario(){
+        const rosarioEl = document.querySelector('#rosario');
+        const containersEls = document.querySelectorAll('.pasos-container');
+        containersEls.forEach(containerEl => rosarioEl.removeChild(containerEl) )
     }
 
 }

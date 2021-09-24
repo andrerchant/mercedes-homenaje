@@ -1,14 +1,18 @@
 .floating-btn{
     margin: 1rem;
     background: #464646;
+    border: darkgray;
     width: 6rem;
     text-align: center;
     padding: 0.6rem 0;
     border-radius: 5px;
     color: whitesmoke;
-    position: absolute;
     cursor: pointer;
 }
+.floating-btn:hover{
+    opacity: .7;
+}
+
 .show {
   opacity: 1;
   transform: translateX(0);
@@ -209,7 +213,8 @@ span#time {
 .rosario-container{
     display: flex;
     flex-direction: column;
-    margin: 2.5rem 0;
+    margin: 2.5rem auto;
+    width: 60%;
 }
 
 .rosario-container header{
@@ -217,13 +222,17 @@ span#time {
     display: flex;
     flex-flow: column;
     width: 50%;
-    margin: 0 auto;
 }
+
+.rosario-container nav{
+    text-align: center;
+    vertical-align: middle;
+}
+
 
 .rosario-container h2, .rosario-container h3{
-    margin: .2rem 0;;
+    margin:0;
 }
-
 
 #rosario{
     height: 14rem;
@@ -236,7 +245,7 @@ span#time {
   flex-wrap: wrap;
   align-items: center;
   width: 100%;
-  margin: 2rem auto;
+  margin: 2rem 0;
   min-width: 12rem;
   max-width: 43rem;
 }
@@ -288,7 +297,11 @@ span#time {
     opacity: 1;
 }
 
-
+.in-process {
+    color: bisque;
+    font-size: 2.4rem;
+    margin: 1rem 0;
+}
 
 @keyframes rotate {
     from{

@@ -90,10 +90,15 @@
     <header class="misterio">
       <h2>Santo Rosario</h2>
       <h3>Misterio</h3>
-      <p> ... </p>
     </header>
+    <div class="in-process"></div>
     <div id="rosario">
     </div>
+    <nav>
+      <button class="floating-btn befR">⬅ Anterior</button>
+      <button class="floating-btn startR"> Empezar </button>
+      <button class="floating-btn nextR"> Siguiente ➡</button>
+    </nav>
   </section>
 
   <!-- fin rosario -->
@@ -101,13 +106,11 @@
   <script>
     function toggleSection(section) {
       const currSections = document.querySelectorAll('.toggle');
-      console.log({section, currSections})
         currSections.forEach(sec => {
           sec.classList.remove('show');
           sec.classList.add('hide');
         })
         const pickedEl = document.querySelector(section);
-        console.log({pickedEl})
         pickedEl.classList.remove('hide');
         pickedEl.classList.add('show');
       }

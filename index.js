@@ -1,4 +1,4 @@
-import { rosario, drawRosario} from "./assets/js/rosario-core.js";
+import { rosario } from "./assets/js/rosario-core.js";
 
 const formatTime = value => `${value < 10 ? 0 : ''}${value}`;
 
@@ -20,7 +20,13 @@ function showTime(plannedHour=19) {
 
 setInterval(() => showTime(), 1000);
 
-const graphRosario = new drawRosario(3);
 const _rosario = new rosario();
 _rosario.drawMisterio();
 
+const beforeEl = document.querySelector('.befR');
+const nextEl = document.querySelector('.nextR');
+const startEl = document.querySelector('.startR');
+
+nextEl.addEventListener('click',()=>_rosario.emulate('next'))
+beforeEl.addEventListener('click',()=>_rosario.emulate('before'));
+startEl.addEventListener('click',()=>_rosario.emulate('start'))
