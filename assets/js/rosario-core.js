@@ -70,10 +70,9 @@ export class rosario {
         {
             repeat: [
                 'N misterio',
-                'Padrenuestro',
+                'Padre nuestro',
                 'Ave María x10',
                 'Gloria',
-                'María, madre de gracia...',
                 'Oh Jesús mío',
                 'Música',
             ]
@@ -83,9 +82,7 @@ export class rosario {
                 'Letanías',
                 'Cordero de Dios',
                 'Oración',
-                'Ave María',
-                'Gloria',
-                'Salve'
+                'Música',
             ]
         }
 
@@ -138,10 +135,15 @@ export class rosario {
     }
 
     manageRosario(index, rosarioParts){
+        const rosarioEl = document.querySelector('#rosario');
         if (rosarioParts[index].includes('Ave María x10')){
             this.graphRosario.init(10);
             this.graphRosario.handleRosario();
-        } else this.graphRosario.removeRosario()
+            rosarioEl.classList.remove('mary');
+        } else{ 
+            this.graphRosario.removeRosario();
+            rosarioEl.classList.add('mary');
+        }
     }
 };
 

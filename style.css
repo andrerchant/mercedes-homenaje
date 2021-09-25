@@ -303,6 +303,13 @@ span#time {
     margin: 1rem 0;
 }
 
+.mary{
+    background: url(/assets/virgen_maria.png) no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+
 @keyframes rotate {
     from{
         transform: rotate(0deg) scale(1);

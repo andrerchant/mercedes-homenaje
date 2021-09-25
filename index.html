@@ -57,7 +57,7 @@
       </div>
 
       <div class="card middle">
-        <div onclick="toggleSection('#rosario')">
+        <div onclick="toggleSection('.rosario-container')">
           <img src="assets/rosario.jpg" alt="Empezar Rosario">
           <div class="title">
             <h3> Rosario </h3>
@@ -85,14 +85,14 @@
 
   <!-- rosario -->
 
-  <section class="rosario-container toggle">
+  <section class="rosario-container toggle show">
     <small class="floating-btn" onclick="toggleSection('.info')"> ⬅ Volver</small>
     <header class="misterio">
       <h2>Santo Rosario</h2>
       <h3>Misterio</h3>
     </header>
     <div class="in-process"></div>
-    <div id="rosario">
+    <div id="rosario" class="mary">
     </div>
     <nav>
       <button class="floating-btn befR">⬅ Anterior</button>
@@ -110,6 +110,7 @@
           sec.classList.remove('show');
           sec.classList.add('hide');
         })
+        console.log({section})
         const pickedEl = document.querySelector(section);
         pickedEl.classList.remove('hide');
         pickedEl.classList.add('show');
