@@ -1,3 +1,4 @@
+import './style.css'
 import { rosario } from "./assets/js/rosario-core.js";
 
 const formatTime = value => `${value < 10 ? 0 : ''}${value}`;
@@ -22,6 +23,8 @@ setInterval(() => showTime(), 1000);
 
 const _rosario = new rosario();
 _rosario.drawMisterio();
+
+console.log({_rosario});
 
 const beforeEl = document.querySelector('.befR');
 const nextEl = document.querySelector('.nextR');

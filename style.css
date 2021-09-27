@@ -61,7 +61,7 @@ body {
 }
 .header-media {
     background: linear-gradient(0deg, #292929, white, #292929);
-        background: url(assets/clouds.jpg) no-repeat;
+    background: url(assets/clouds.jpg) no-repeat;
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
@@ -157,7 +157,7 @@ span#time {
 .card img {
     width: 100%;
     object-fit: cover;
-        height: 10rem;
+    height: 10rem;
     object-position: 0 25%;
 }
 
