@@ -24,7 +24,7 @@
     </header>
 
     <section class="remaining-time">
-      <small>Siguiente rosario:</small>
+      <small>Siguiente misa :</small>
       <span id="time">Iniciando...</span>
     </section>
 
@@ -86,7 +86,7 @@
   <!-- rosario -->
 
   <section class="rosario-container toggle show">
-    <small class="floating-btn" onclick="toggleSection('.info')"> ⬅ Volver</small>
+    <small class="floating-btn blue" onclick="toggleSection('.info')"> ⬅ Volver</small>
     <header class="misterio">
       <h2>Santo Rosario</h2>
       <h3>Misterio</h3>
@@ -96,7 +96,7 @@
     </div>
     <nav>
       <button class="floating-btn befR">⬅ Anterior</button>
-      <button class="floating-btn startR"> Empezar </button>
+      <button class="floating-btn startR red"> Empezar </button>
       <button class="floating-btn nextR"> Siguiente ➡</button>
     </nav>
   </section>
@@ -106,15 +106,14 @@
   <script>
     function toggleSection(section) {
       const currSections = document.querySelectorAll('.toggle');
-        currSections.forEach(sec => {
-          sec.classList.remove('show');
-          sec.classList.add('hide');
-        })
-        console.log({section})
-        const pickedEl = document.querySelector(section);
-        pickedEl.classList.remove('hide');
-        pickedEl.classList.add('show');
-      }
+      currSections.forEach(sec => {
+        sec.classList.remove('show');
+        sec.classList.add('hide');
+      })
+      const pickedEl = document.querySelector(section);
+      pickedEl.classList.remove('hide');
+      pickedEl.classList.add('show');
+    }
   </script>
 
 </body>

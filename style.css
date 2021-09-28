@@ -1,5 +1,5 @@
 .floating-btn{
-    margin: 1rem;
+    margin: .9rem 0;
     background: #464646;
     border: darkgray;
     width: 6rem;
@@ -8,6 +8,12 @@
     border-radius: 5px;
     color: whitesmoke;
     cursor: pointer;
+}
+.floating-btn.red{
+    background: firebrick;
+}
+.floating-btn.blue{
+    background: darkcyan;
 }
 .floating-btn:hover{
     opacity: .7;
@@ -213,8 +219,9 @@ span#time {
 .rosario-container{
     display: flex;
     flex-direction: column;
-    margin: 2.5rem auto;
-    width: 60%;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .rosario-container header{
@@ -228,7 +235,6 @@ span#time {
     text-align: center;
     vertical-align: middle;
 }
-
 
 .rosario-container h2, .rosario-container h3{
     margin:0;
